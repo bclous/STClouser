@@ -36,9 +36,9 @@ class MessageTableViewCell: UITableViewCell {
     func formatCellWithMessage(_ message: Message) {
         
         self.message = message
-        userName.text = message.user.name
+        userName.text = message.user.username
         messageBody.text = message.body
-        avatarImageView.layer.cornerRadius = 20
+        avatarImageView.layer.cornerRadius = 10
         
         let avatarImage = message.user.avatarImage()
         

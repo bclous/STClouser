@@ -40,7 +40,7 @@
                             <action selector="avatarTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pjy-MK-FdJ"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ihh-ri-xHH">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ihh-ri-xHH">
                         <rect key="frame" x="8" y="8" width="45" height="45"/>
                         <color key="backgroundColor" red="0.26807689109999999" green="0.54880666369999997" blue="0.87033258700000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>

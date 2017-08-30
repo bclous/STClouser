@@ -34,6 +34,7 @@ class UserMainTableViewCell: UITableViewCell {
         userNameLabel.text = user.username
         nameLabel.text = user.name
         avatarImageView.image = user.avatarImage()
+        avatarImageView.layer.cornerRadius = 10
         let memberSinceDateString = user.dateString()
         if let dateString = memberSinceDateString {
             memberSinceLabel.text = "Member since: " + dateString

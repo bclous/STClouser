@@ -16,7 +16,7 @@ class UserVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatTableView()
-       title = "Profile"
+        title = "Profile"
     }
 
 }
@@ -49,7 +49,11 @@ extension UserVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 270
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
 }
