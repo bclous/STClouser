@@ -23,6 +23,10 @@
 		0FAE55871F571CC80037B18F /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE55861F571CC80037B18F /* UserVC.swift */; };
 		0FAE55891F571D0A0037B18F /* TrendingStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE55881F571D0A0037B18F /* TrendingStockCell.swift */; };
 		0FAE558B1F571D210037B18F /* TrendingStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAE558A1F571D210037B18F /* TrendingStockCell.xib */; };
+		0FAE558E1F5724FA0037B18F /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE558C1F5724FA0037B18F /* MessageTableViewCell.swift */; };
+		0FAE558F1F5724FA0037B18F /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAE558D1F5724FA0037B18F /* MessageTableViewCell.xib */; };
+		0FAE55921F572D200037B18F /* UserMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE55901F572D200037B18F /* UserMainTableViewCell.swift */; };
+		0FAE55931F572D200037B18F /* UserMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAE55911F572D200037B18F /* UserMainTableViewCell.xib */; };
 		39614E74621793697B504E12 /* Pods_STClouserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4EDB2BA5EAFA8854BBD020 /* Pods_STClouserTests.framework */; };
 		991944EAB1C86DDE097982A9 /* Pods_STClouser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A017924962BB7014CCC88C /* Pods_STClouser.framework */; };
 		FC332494F58DD45EC71B179B /* Pods_STClouserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F61CA6D0A1232E8AE0CC7A /* Pods_STClouserUITests.framework */; };
@@ -68,6 +72,10 @@
 		0FAE55861F571CC80037B18F /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		0FAE55881F571D0A0037B18F /* TrendingStockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingStockCell.swift; sourceTree = "<group>"; };
 		0FAE558A1F571D210037B18F /* TrendingStockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrendingStockCell.xib; sourceTree = "<group>"; };
+		0FAE558C1F5724FA0037B18F /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		0FAE558D1F5724FA0037B18F /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		0FAE55901F572D200037B18F /* UserMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMainTableViewCell.swift; sourceTree = "<group>"; };
+		0FAE55911F572D200037B18F /* UserMainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserMainTableViewCell.xib; sourceTree = "<group>"; };
 		26BAB7F576C450BE7164B122 /* Pods-STClouserUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STClouserUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STClouserUITests/Pods-STClouserUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2B4EDB2BA5EAFA8854BBD020 /* Pods_STClouserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STClouserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3960F170F1C2EC110D25ED /* Pods-STClouser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STClouser.release.xcconfig"; path = "Pods/Target Support Files/Pods-STClouser/Pods-STClouser.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,18 +140,14 @@
 		0FAE554B1F56F8760037B18F /* STClouser */ = {
 			isa = PBXGroup;
 			children = (
-				0FAE554C1F56F8760037B18F /* AppDelegate.swift */,
-				0FAE554E1F56F8760037B18F /* TrendingStocksVC.swift */,
-				0FAE55841F571CBC0037B18F /* IndividualStockVC.swift */,
-				0FAE55861F571CC80037B18F /* UserVC.swift */,
 				0FAE55501F56F8760037B18F /* Main.storyboard */,
-				0FAE55881F571D0A0037B18F /* TrendingStockCell.swift */,
-				0FAE558A1F571D210037B18F /* TrendingStockCell.xib */,
+				0FAE554C1F56F8760037B18F /* AppDelegate.swift */,
 				0FAE557A1F56FEC10037B18F /* StockTwitsAPIClient.swift */,
 				0FAE55821F57051D0037B18F /* DataStore.swift */,
-				0FAE557C1F5700850037B18F /* Stock.swift */,
-				0FAE557E1F5701B30037B18F /* User.swift */,
-				0FAE55801F5702580037B18F /* Message.swift */,
+				0FAE55951F573D2A0037B18F /* Trending Stocks */,
+				0FAE55961F573D3E0037B18F /* Individual Stock */,
+				0FAE55971F573D680037B18F /* User */,
+				0FAE55941F573D120037B18F /* Model */,
 				0FAE55531F56F8760037B18F /* Assets.xcassets */,
 				0FAE55551F56F8760037B18F /* LaunchScreen.storyboard */,
 				0FAE55581F56F8760037B18F /* Info.plist */,
@@ -167,6 +171,46 @@
 				0FAE556E1F56F8760037B18F /* Info.plist */,
 			);
 			path = STClouserUITests;
+			sourceTree = "<group>";
+		};
+		0FAE55941F573D120037B18F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0FAE557C1F5700850037B18F /* Stock.swift */,
+				0FAE557E1F5701B30037B18F /* User.swift */,
+				0FAE55801F5702580037B18F /* Message.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0FAE55951F573D2A0037B18F /* Trending Stocks */ = {
+			isa = PBXGroup;
+			children = (
+				0FAE554E1F56F8760037B18F /* TrendingStocksVC.swift */,
+				0FAE55881F571D0A0037B18F /* TrendingStockCell.swift */,
+				0FAE558A1F571D210037B18F /* TrendingStockCell.xib */,
+			);
+			name = "Trending Stocks";
+			sourceTree = "<group>";
+		};
+		0FAE55961F573D3E0037B18F /* Individual Stock */ = {
+			isa = PBXGroup;
+			children = (
+				0FAE55841F571CBC0037B18F /* IndividualStockVC.swift */,
+				0FAE558C1F5724FA0037B18F /* MessageTableViewCell.swift */,
+				0FAE558D1F5724FA0037B18F /* MessageTableViewCell.xib */,
+			);
+			name = "Individual Stock";
+			sourceTree = "<group>";
+		};
+		0FAE55971F573D680037B18F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0FAE55861F571CC80037B18F /* UserVC.swift */,
+				0FAE55901F572D200037B18F /* UserMainTableViewCell.swift */,
+				0FAE55911F572D200037B18F /* UserMainTableViewCell.xib */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		43E54BB993D2B5785444EE75 /* Pods */ = {
@@ -313,6 +357,8 @@
 			files = (
 				0FAE55571F56F8760037B18F /* LaunchScreen.storyboard in Resources */,
 				0FAE558B1F571D210037B18F /* TrendingStockCell.xib in Resources */,
+				0FAE558F1F5724FA0037B18F /* MessageTableViewCell.xib in Resources */,
+				0FAE55931F572D200037B18F /* UserMainTableViewCell.xib in Resources */,
 				0FAE55541F56F8760037B18F /* Assets.xcassets in Resources */,
 				0FAE55521F56F8760037B18F /* Main.storyboard in Resources */,
 			);
@@ -481,6 +527,8 @@
 				0FAE55831F57051D0037B18F /* DataStore.swift in Sources */,
 				0FAE557B1F56FEC10037B18F /* StockTwitsAPIClient.swift in Sources */,
 				0FAE554F1F56F8760037B18F /* TrendingStocksVC.swift in Sources */,
+				0FAE558E1F5724FA0037B18F /* MessageTableViewCell.swift in Sources */,
+				0FAE55921F572D200037B18F /* UserMainTableViewCell.swift in Sources */,
 				0FAE557D1F5700850037B18F /* Stock.swift in Sources */,
 				0FAE55891F571D0A0037B18F /* TrendingStockCell.swift in Sources */,
 				0FAE55811F5702580037B18F /* Message.swift in Sources */,

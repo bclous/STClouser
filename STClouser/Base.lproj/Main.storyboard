@@ -12,7 +12,7 @@
         <!--Trending StocksVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TrendingStocksVC" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TrendingStocksVC" customModule="STClouser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,32 +21,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-2Z-cv8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HN1-m0-Xjd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="h7b-2Z-cv8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Edj-im-p6u"/>
-                            <constraint firstItem="h7b-2Z-cv8" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="FyQ-WT-grA"/>
-                            <constraint firstItem="h7b-2Z-cv8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kq7-Eg-9lj"/>
-                            <constraint firstItem="h7b-2Z-cv8" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="y9o-Gv-jYQ"/>
+                            <constraint firstItem="HN1-m0-Xjd" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="18w-wO-QNL"/>
+                            <constraint firstItem="HN1-m0-Xjd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="27P-Sc-mCb"/>
+                            <constraint firstItem="HN1-m0-Xjd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RLj-k0-3tw"/>
+                            <constraint firstItem="HN1-m0-Xjd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hmY-SL-fSq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bqb-zb-uMy"/>
                     <connections>
-                        <segue destination="qEE-WE-cVY" kind="show" id="EKa-6h-scf"/>
+                        <outlet property="mainTableView" destination="HN1-m0-Xjd" id="Oq6-4y-crb"/>
+                        <segue destination="qEE-WE-cVY" kind="show" identifier="individualStockSegue" id="EKa-6h-scf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Individual StockVC-->
         <scene sceneID="TXc-QO-9Wp">
             <objects>
-                <viewController id="qEE-WE-cVY" sceneMemberID="viewController">
+                <viewController id="qEE-WE-cVY" customClass="IndividualStockVC" customModule="STClouser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j3w-ts-aEM"/>
                         <viewControllerLayoutGuide type="bottom" id="vIT-NI-bVR"/>
@@ -54,21 +55,33 @@
                     <view key="view" contentMode="scaleToFill" id="Nff-ZB-P7u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jVa-5I-S8v">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jVa-5I-S8v" firstAttribute="width" secondItem="Nff-ZB-P7u" secondAttribute="width" id="DXk-PY-Xsq"/>
+                            <constraint firstItem="jVa-5I-S8v" firstAttribute="centerY" secondItem="Nff-ZB-P7u" secondAttribute="centerY" id="LbE-5W-Cco"/>
+                            <constraint firstItem="jVa-5I-S8v" firstAttribute="centerX" secondItem="Nff-ZB-P7u" secondAttribute="centerX" id="VZ2-CR-COn"/>
+                            <constraint firstItem="jVa-5I-S8v" firstAttribute="height" secondItem="Nff-ZB-P7u" secondAttribute="height" id="kPV-C3-wJ7"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <segue destination="VCE-bk-0dS" kind="show" id="hjC-kf-sJZ"/>
+                        <outlet property="mainTableView" destination="jVa-5I-S8v" id="iQz-Uc-Fvt"/>
+                        <segue destination="VCE-bk-0dS" kind="show" identifier="userSegue" id="hjC-kf-sJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOK-Yr-kTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1803" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--UserVC-->
         <scene sceneID="3bg-g1-bN2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Rm-VU-MRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="VCE-bk-0dS" sceneMemberID="viewController">
+                <viewController id="VCE-bk-0dS" customClass="UserVC" customModule="STClouser" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qBY-lP-KOe"/>
                         <viewControllerLayoutGuide type="bottom" id="shk-AI-qsu"/>
@@ -76,9 +89,25 @@
                     <view key="view" contentMode="scaleToFill" id="Y5f-6H-8dM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a6A-5Q-FOB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a6A-5Q-FOB" firstAttribute="centerX" secondItem="Y5f-6H-8dM" secondAttribute="centerX" id="6nL-oy-Wea"/>
+                            <constraint firstItem="a6A-5Q-FOB" firstAttribute="centerY" secondItem="Y5f-6H-8dM" secondAttribute="centerY" id="QC1-dm-LDO"/>
+                            <constraint firstItem="a6A-5Q-FOB" firstAttribute="width" secondItem="Y5f-6H-8dM" secondAttribute="width" id="qKP-ce-3zd"/>
+                            <constraint firstItem="a6A-5Q-FOB" firstAttribute="height" secondItem="Y5f-6H-8dM" secondAttribute="height" id="slY-og-M2X"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="a6A-5Q-FOB" id="S67-tM-U4H"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Rm-VU-MRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2540" y="139"/>
         </scene>

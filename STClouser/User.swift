@@ -29,5 +29,29 @@ class User: NSObject {
         self.official = official
         self.messages = messages
     }
+    
+    public func avatarImage() -> UIImage? {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsURL.appendingPathComponent("\(id).png").path
+        if FileManager.default.fileExists(atPath: filePath) {
+            return UIImage(contentsOfFile: filePath)
+        }
+        
+        return nil
+    }
+    
+    public func cacheAvatarImage(_ image: UIImage) {
+        do {
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let fileURL = documentsURL.appendingPathComponent("\(id).png")
+            if let pngImageData = UIImagePNGRepresentation(image) {
+                try pngImageData.write(to: fileURL, options: .atomic)
+            }
+        } catch { }
+    }
+    
+    
+    
+
 
 }
