@@ -14,11 +14,13 @@ class IndividualStockVC: UIViewController {
     
     var stock : Stock?
     var chosenUser : User?
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         formatTableView()
         if let stock = stock {
+            title = stock.symbol
             StockTwitsAPIClient.pullMessagesForSymbol(stock.symbol, completionHandler: { (success) in
                 if success {
                     self.mainTableView.reloadData()
@@ -33,8 +35,6 @@ class IndividualStockVC: UIViewController {
         let destinationVC = segue.destination as! UserVC
         destinationVC.user = chosenUser
     }
- 
-
 }
 
 extension IndividualStockVC : UITableViewDelegate, UITableViewDataSource {
@@ -45,6 +45,7 @@ extension IndividualStockVC : UITableViewDelegate, UITableViewDataSource {
         mainTableView.register(UINib(nibName: "MessageTableViewCell", bundle: nil), forCellReuseIdentifier: "messageCell")
         mainTableView.estimatedRowHeight = 68.0
         mainTableView.rowHeight = UITableViewAutomaticDimension
+        formatRefreshControl()
 
     }
     
@@ -73,6 +74,26 @@ extension IndividualStockVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    
+    func formatRefreshControl() {
+        if #available(iOS 10.0, *) {
+            mainTableView.refreshControl = refreshControl
+        } else {
+            mainTableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshMessages), for: .valueChanged)
+    }
+    
+    func refreshMessages() {
+        if let stock = stock {
+            StockTwitsAPIClient.pullMessagesForSymbol(stock.symbol, completionHandler: { (success) in
+                self.refreshControl.endRefreshing()
+                self.mainTableView.reloadData()
+            })
+            
+        }
     }
     
 

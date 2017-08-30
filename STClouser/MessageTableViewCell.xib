@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6o2-rF-K0p">
-                        <rect key="frame" x="61" y="33" width="297" height="16"/>
+                        <rect key="frame" x="61" y="28" width="297" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                     <constraint firstAttribute="topMargin" secondItem="ihh-ri-xHH" secondAttribute="top" id="Aqh-OB-vif"/>
                     <constraint firstItem="E18-QB-gVI" firstAttribute="centerY" secondItem="ihh-ri-xHH" secondAttribute="centerY" id="ByC-bh-WQM"/>
                     <constraint firstAttribute="trailing" secondItem="yNm-eV-Fvc" secondAttribute="trailing" constant="10" id="EUA-4Z-M4B"/>
-                    <constraint firstItem="6o2-rF-K0p" firstAttribute="top" secondItem="yNm-eV-Fvc" secondAttribute="bottom" constant="8" id="T3X-4O-Lz8"/>
+                    <constraint firstItem="6o2-rF-K0p" firstAttribute="top" secondItem="yNm-eV-Fvc" secondAttribute="bottom" constant="3" id="T3X-4O-Lz8"/>
                     <constraint firstItem="E18-QB-gVI" firstAttribute="height" secondItem="ihh-ri-xHH" secondAttribute="height" id="Ys0-Ra-zF4"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6o2-rF-K0p" secondAttribute="bottom" constant="10" id="cTa-Nn-bJK"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="E18-QB-gVI" secondAttribute="bottom" constant="10" id="h5Y-dm-anh"/>

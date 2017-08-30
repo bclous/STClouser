@@ -40,6 +40,12 @@ class User: NSObject {
         return nil
     }
     
+    public func dateString() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M/d/yyyy"
+        return dateFormatter.string(from: join_date)
+    }
+    
     public func cacheAvatarImage(_ image: UIImage) {
         do {
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

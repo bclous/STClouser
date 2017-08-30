@@ -78,7 +78,7 @@ class StockTwitsAPIClient {
             let id = messageResponse["id"] as? Int ?? 0
             let body = messageResponse["body"] as? String ?? ""
             let createdAt = messageResponse["created_at"] as? String ?? ""
-            let createdAtDate = dateFromString(createdAt, dateFormat: "yyyy-MM-ddThh:mm:ssZ") ?? Date()
+            let createdAtDate = dateFromString(createdAt, dateFormat: "yyyy-MM-ddThh:mm:ssZ") ?? Date()   // This is not working and defaulting to today...need to figure out format
             let userDictionary = messageResponse["user"] as? [String : Any] ?? [:]
             let userID = userDictionary["id"] as? Int ?? 0
           
@@ -95,7 +95,7 @@ class StockTwitsAPIClient {
                 let avatarURL = userDictionary["avatar_url"] as? String ?? ""
                 let avatarURLSSL = userDictionary["avatar_url_ssl"] as? String ?? ""
                 let joined = userDictionary["join_date"] as? String ?? ""
-                let joinDate = dateFromString(joined, dateFormat: "yyyy-mm-dd") ?? Date()
+                let joinDate = dateFromString(joined, dateFormat: "yyyy-MM-dd") ?? Date()
                 let official = userDictionary["official"] as? Bool ?? false
                 
                 let user = User(id: userID, username: userName, name: name, avatarURL: avatarURL, avatarSSL: avatarURLSSL, join_date: joinDate, official: official, messages: [])
@@ -113,10 +113,5 @@ class StockTwitsAPIClient {
         let date = dateFormatter.date(from: dateString)
         return date
     }
-    
-    
-    
-    
-    
     
 }
