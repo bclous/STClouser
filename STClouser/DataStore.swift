@@ -39,6 +39,7 @@ class DataStore: NSObject {
         return false
     }
     
+        
     public func userFromDatabaseFromID(_ userID: Int) -> User? {
         for user in users {
             if user.id == userID {

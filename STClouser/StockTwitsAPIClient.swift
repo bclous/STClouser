@@ -75,42 +75,54 @@ class StockTwitsAPIClient {
     private static func addMessagesToStock(_ stock: Stock, responseArray: [[String : Any]]) {
         
         for messageResponse in responseArray {
-            let id = messageResponse["id"] as? Int ?? 0
-            let body = messageResponse["body"] as? String ?? ""
-            let createdAt = messageResponse["created_at"] as? String ?? ""
-            let createdAtDate = dateFromString(createdAt, dateFormat: "yyyy-MM-ddThh:mm:ssZ") ?? Date()   // This is not working and defaulting to today...need to figure out format
-            let userDictionary = messageResponse["user"] as? [String : Any] ?? [:]
-            let userID = userDictionary["id"] as? Int ?? 0
-          
-            let userExists = DataStore.shared.isUserInDatabase(userID: userID)
             
-            if userExists {
-                let user = DataStore.shared.userFromDatabaseFromID(userID)!
-                let message = Message(id: id, body: body, created_at: createdAtDate , user: user)
-                user.messages.append(message)
-                stock.messages.append(message)
-            } else {
-                let userName = userDictionary["username"] as? String ?? ""
-                let name = userDictionary["name"] as? String ?? ""
-                let avatarURL = userDictionary["avatar_url"] as? String ?? ""
-                let avatarURLSSL = userDictionary["avatar_url_ssl"] as? String ?? ""
-                let joined = userDictionary["join_date"] as? String ?? ""
-                let joinDate = dateFromString(joined, dateFormat: "yyyy-MM-dd") ?? Date()
-                let official = userDictionary["official"] as? Bool ?? false
+            let id = messageResponse["id"] as? Int ?? 0
+            
+            if !stock.isMessageInStockDatabase(messageID: id){
+                let body = messageResponse["body"] as? String ?? ""
+                let createdAt = messageResponse["created_at"] as? String ?? ""
+                let createdAtDate = isoDateFromString(createdAt) ?? Date()
+                let userDictionary = messageResponse["user"] as? [String : Any] ?? [:]
+                let userID = userDictionary["id"] as? Int ?? 0
                 
-                let user = User(id: userID, username: userName, name: name, avatarURL: avatarURL, avatarSSL: avatarURLSSL, join_date: joinDate, official: official, messages: [])
-                DataStore.shared.users.append(user)
-                let message = Message(id: id, body: body, created_at: createdAtDate, user: user)
-                stock.messages.append(message)
-                user.messages.append(message)
+                let userExists = DataStore.shared.isUserInDatabase(userID: userID)
+                
+                if userExists {
+                    let user = DataStore.shared.userFromDatabaseFromID(userID)!
+                    let message = Message(id: id, body: body, created_at: createdAtDate , user: user)
+                    user.messages.append(message)
+                    stock.messages.append(message)
+                } else {
+                    let userName = userDictionary["username"] as? String ?? ""
+                    let name = userDictionary["name"] as? String ?? ""
+                    let avatarURL = userDictionary["avatar_url"] as? String ?? ""
+                    let avatarURLSSL = userDictionary["avatar_url_ssl"] as? String ?? ""
+                    let joined = userDictionary["join_date"] as? String ?? ""
+                    let joinDate = dateFromString(joined, dateFormat: "yyyy-MM-dd") ?? Date()
+                    let official = userDictionary["official"] as? Bool ?? false
+                    
+                    let user = User(id: userID, username: userName, name: name, avatarURL: avatarURL, avatarSSL: avatarURLSSL, join_date: joinDate, official: official, messages: [])
+                    DataStore.shared.users.append(user)
+                    let message = Message(id: id, body: body, created_at: createdAtDate, user: user)
+                    stock.messages.append(message)
+                    user.messages.append(message)
+                }
             }
         }
+        
+        stock.sortMessages(reverseChrono: true)
     }
     
     private static func dateFromString(_ dateString: String, dateFormat: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         let date = dateFormatter.date(from: dateString)
+        return date
+    }
+    
+    private static func isoDateFromString(_ dateString: String) -> Date? {
+        let isoFormatter = ISO8601DateFormatter()
+        let date = isoFormatter.date(from: dateString)
         return date
     }
     
