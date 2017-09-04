@@ -13,15 +13,15 @@ class TrendingStocksVC: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     var chosenStock : Stock?
     let refreshControl = UIRefreshControl()
+    let splashScreen = SplashScreenView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        StockTwitsAPIClient.pullTrendingSymbols { (success) in
-            self.formatTableView()
-            self.mainTableView.reloadData()
-        }
         title = "Trending"
+        formatSplashScreen()
+        self.formatTableView()
+        pullTrendingStocks()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +35,33 @@ class TrendingStocksVC: UIViewController {
         destinationVC.stock = chosenStock
      }
     
+    func formatSplashScreen() {
+        view.addSubview(splashScreen)
+        splashScreen.translatesAutoresizingMaskIntoConstraints = false
+        splashScreen.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        splashScreen.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        splashScreen.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        splashScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    func pullTrendingStocks() {
+        StockTwitsAPIClient.pullTrendingSymbols { (success) in
+            if success {
+                self.splashScreen.isHidden = true
+                self.navigationController?.navigationBar.isHidden = false
+                self.mainTableView.reloadData()
+            } else {
+                self.presentAlertToUser(title: "Unable to Connect", message: "Please try again", handler: self.alertHandler(_:))
+            }
+        }
+    }
+    
+    func alertHandler(_ action: UIAlertAction) {
+        pullTrendingStocks()
+    }
+
 }
 
 extension TrendingStocksVC:  UITableViewDelegate, UITableViewDataSource {
@@ -82,6 +109,15 @@ extension TrendingStocksVC:  UITableViewDelegate, UITableViewDataSource {
         }
         
         refreshControl.addTarget(self, action: #selector(refreshTrendingStocks), for: .valueChanged)
+    }
+    
+}
+
+extension UIViewController {
+    func presentAlertToUser(title: String, message:String, handler: @escaping (_ action: UIAlertAction) -> ()) {
+        let importAlert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        importAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: handler))
+        self.present(importAlert, animated: true, completion: nil)
     }
     
 }
