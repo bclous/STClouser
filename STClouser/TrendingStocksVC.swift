@@ -20,12 +20,8 @@ class TrendingStocksVC: UIViewController {
         StockTwitsAPIClient.pullTrendingSymbols { (success) in
             self.formatTableView()
             self.mainTableView.reloadData()
-            
         }
-        
         title = "Trending"
-        
-    
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,8 +33,6 @@ class TrendingStocksVC: UIViewController {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! IndividualStockVC
         destinationVC.stock = chosenStock
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
      }
     
 }
