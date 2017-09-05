@@ -26,20 +26,23 @@ class Stock: NSObject {
         self.init(id: id, symbol: symbol, title: title, messages: [])
     }
     
-    public func isMessageInStockDatabase(messageID: Int) -> Bool {
-        for message in messages {
-            if messageID == message.id {
-                return true
-            }
-        }
-        return false
+    convenience init(response: [String : Any]) {
+        let stockID = response["id"] as? Int ?? 0
+        let stockSymbol = response["symbol"] as? String ?? ""
+        let stockTitle = response["title"] as? String ?? ""
+        self.init(id: stockID, symbol: stockSymbol, title: stockTitle)
     }
     
     public func sortMessages(reverseChrono: Bool) {
         if reverseChrono {
-            messages.sort(by: {$0.created_at > $1.created_at})
+            messages.sort(by: {$0.createdAt > $1.createdAt})
         } else {
-            messages.sort(by: {$0.created_at < $1.created_at})
+            messages.sort(by: {$0.createdAt < $1.createdAt})
         }
     }
+    
+    public func clearAllMessages() {
+        messages.removeAll()
+    }
+        
 }

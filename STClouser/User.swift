@@ -30,6 +30,18 @@ class User: NSObject {
         self.messages = messages
     }
     
+    convenience init(userDictionary: [String : Any]) {
+        let userIDFromDictionary = userDictionary["id"] as? Int ?? 0
+        let userNameFromDictionary = userDictionary["username"] as? String ?? ""
+        let nameFromDictionary = userDictionary["name"] as? String ?? ""
+        let avatarURLFromDictionary = userDictionary["avatar_url"] as? String ?? ""
+        let avatarURLSSLFromDictionary = userDictionary["avatar_url_ssl"] as? String ?? ""
+        let joinedFromDictionary = userDictionary["join_date"] as? String ?? ""
+        let joinDateFromDictionary = Date.dateFromString(joinedFromDictionary, dateFormat: "yyyy-MM-dd") ?? Date()
+        let officialFromDictionary = userDictionary["official"] as? Bool ?? false
+        self.init(id: userIDFromDictionary, username: userNameFromDictionary, name: nameFromDictionary, avatarURL: avatarURLFromDictionary, avatarSSL: avatarURLSSLFromDictionary, join_date: joinDateFromDictionary, official: officialFromDictionary, messages: [])
+    }
+    
     public func avatarImage() -> UIImage? {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let filePath = documentsURL.appendingPathComponent("\(id).png").path

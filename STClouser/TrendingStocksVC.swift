@@ -117,23 +117,5 @@ extension TrendingStocksVC: NoConnectionVCDelegate {
     }
 }
 
-extension UIViewController {
-    func presentAlertToUser(title: String, message:String, handler: @escaping (_ action: UIAlertAction) -> ()) {
-        let importAlert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        importAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: handler))
-        self.present(importAlert, animated: true, completion: nil)
-    }
-    
-    func constrainSubViewFullScreen(_ subView: UIView, isActive: Bool) {
-        view.addSubview(subView)
-        subView.translatesAutoresizingMaskIntoConstraints = false
-        subView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = isActive
-        subView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = isActive
-        subView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = isActive
-        subView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = isActive
-    }
-    
-}
-
 
 
