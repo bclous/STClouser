@@ -16,7 +16,10 @@ class StockTwitsAPIClient {
     
     public static func pullTrendingSymbols(completionHandler: @escaping (_ success: Bool) -> ()) {
         
+        
+        
         let request = Alamofire.request(trendingURL)
+        
         request.responseJSON { (response) in
             
             if response.result.isFailure {
