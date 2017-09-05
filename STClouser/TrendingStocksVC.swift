@@ -13,16 +13,14 @@ class TrendingStocksVC: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     var chosenStock : Stock?
     let refreshControl = UIRefreshControl()
-    let splashScreen = SplashScreenView()
     let noConnectionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoConnectionVC") as! NoConnectionVC
     
     override func viewDidLoad() {
         super.viewDidLoad()
         formatNavBar()
-        formatSupplementalViews()
+        formatNoConnectionView()
         formatTableView()
         pullTrendingStocks()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,17 +33,13 @@ class TrendingStocksVC: UIViewController {
         destinationVC.stock = chosenStock
      }
     
-    func formatSupplementalViews() {
-        constrainSubViewFullScreen(splashScreen, isActive: true)
-        splashScreen.isHidden = false
-        constrainSubViewFullScreen(noConnectionVC.view, isActive: true)
+    func formatNoConnectionView() {
         noConnectionVC.delegate = self
         noConnectionVC.view.isHidden = true
     }
     
     func pullTrendingStocks() {
         StockTwitsAPIClient.pullTrendingSymbols { (success) in
-            self.splashScreen.isHidden = true
             self.navigationController?.setNavigationBarHidden(false, animated: false)
             if success {
                 self.mainTableView.reloadData()
@@ -62,12 +56,7 @@ class TrendingStocksVC: UIViewController {
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
         navigationController?.automaticallyAdjustsScrollViewInsets = false
-        //navigationController?.navigationBar.tintColor = UIColor.white
-        
-        //navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 62/255.0, green: 88/255.0, blue: 110/255.0, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
     }
 }
 

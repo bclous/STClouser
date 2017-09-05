@@ -37,7 +37,7 @@ class Message: NSObject {
     
     public func createdAtString() -> String {
         
-        
+        let timeSinceMessage = Date().timeIntervalSince(createdAt)
         return ""
         
     }
