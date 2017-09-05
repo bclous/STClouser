@@ -25,6 +25,12 @@ extension Date {
         let date = isoFormatter.date(from: dateString)
         return date
     }
+    
+    public func string(withFormat format: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension UIViewController {

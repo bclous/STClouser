@@ -15,6 +15,7 @@ protocol MessageCellDelegate : class {
 
 class MessageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var timeStamp: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var messageBody: UILabel!
@@ -39,6 +40,7 @@ class MessageTableViewCell: UITableViewCell {
         userName.text = message.user.username
         messageBody.text = message.body
         avatarImageView.layer.cornerRadius = 10
+        timeStamp.text = message.createdAtString()
         
         let avatarImage = message.user.avatarImage()
         

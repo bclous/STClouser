@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNm-eV-Fvc">
-                        <rect key="frame" x="61" y="8" width="297" height="17"/>
+                        <rect key="frame" x="61" y="8" width="157" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="Fof-6x-0Lp"/>
                         </constraints>
@@ -48,14 +48,24 @@
                             <constraint firstAttribute="width" constant="45" id="crE-X9-43A"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1U-6o-kmz">
+                        <rect key="frame" x="228" y="8" width="130" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="E18-QB-gVI" firstAttribute="width" secondItem="ihh-ri-xHH" secondAttribute="width" id="2Ka-rK-tJf"/>
+                    <constraint firstItem="I1U-6o-kmz" firstAttribute="centerY" secondItem="yNm-eV-Fvc" secondAttribute="centerY" id="6Zh-hg-eXS"/>
+                    <constraint firstItem="I1U-6o-kmz" firstAttribute="height" secondItem="yNm-eV-Fvc" secondAttribute="height" id="AkB-5I-npG"/>
                     <constraint firstAttribute="topMargin" secondItem="ihh-ri-xHH" secondAttribute="top" id="Aqh-OB-vif"/>
                     <constraint firstItem="E18-QB-gVI" firstAttribute="centerY" secondItem="ihh-ri-xHH" secondAttribute="centerY" id="ByC-bh-WQM"/>
-                    <constraint firstAttribute="trailing" secondItem="yNm-eV-Fvc" secondAttribute="trailing" constant="10" id="EUA-4Z-M4B"/>
+                    <constraint firstAttribute="trailing" secondItem="yNm-eV-Fvc" secondAttribute="trailing" constant="150" id="EUA-4Z-M4B"/>
+                    <constraint firstItem="I1U-6o-kmz" firstAttribute="leading" secondItem="yNm-eV-Fvc" secondAttribute="trailing" constant="10" id="Hqu-YW-Fmh"/>
                     <constraint firstItem="6o2-rF-K0p" firstAttribute="top" secondItem="yNm-eV-Fvc" secondAttribute="bottom" constant="3" id="T3X-4O-Lz8"/>
                     <constraint firstItem="E18-QB-gVI" firstAttribute="height" secondItem="ihh-ri-xHH" secondAttribute="height" id="Ys0-Ra-zF4"/>
+                    <constraint firstAttribute="trailing" secondItem="I1U-6o-kmz" secondAttribute="trailing" constant="10" id="YvW-Mh-e7Y"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6o2-rF-K0p" secondAttribute="bottom" constant="10" id="cTa-Nn-bJK"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="E18-QB-gVI" secondAttribute="bottom" constant="10" id="h5Y-dm-anh"/>
                     <constraint firstItem="yNm-eV-Fvc" firstAttribute="leading" secondItem="ihh-ri-xHH" secondAttribute="trailing" constant="8" id="jgo-VR-bS1"/>
@@ -69,6 +79,7 @@
             <connections>
                 <outlet property="avatarImageView" destination="ihh-ri-xHH" id="eAt-xx-Ghp"/>
                 <outlet property="messageBody" destination="6o2-rF-K0p" id="KX5-E9-odr"/>
+                <outlet property="timeStamp" destination="I1U-6o-kmz" id="Ihd-2g-3iz"/>
                 <outlet property="userName" destination="yNm-eV-Fvc" id="dnf-NL-0i6"/>
             </connections>
             <point key="canvasLocation" x="-20" y="-113"/>
