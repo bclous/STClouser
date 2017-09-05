@@ -26,6 +26,18 @@ extension Date {
         return date
     }
     
+    public static func datesAreSameDay(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+        let date1Day = calendar.component(.day, from: date1)
+        let date1Month = calendar.component(.month, from: date1)
+        let date1Year = calendar.component(.year, from: date1)
+        let date2Day = calendar.component(.day, from: date2)
+        let date2Month = calendar.component(.month, from: date2)
+        let date2Year = calendar.component(.year, from: date2)
+        
+        return (date1Day == date2Day) && (date1Month == date2Month) && (date1Year == date2Year)
+    }
+    
     public func string(withFormat format: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

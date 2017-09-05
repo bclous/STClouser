@@ -37,32 +37,14 @@ class Message: NSObject {
     
     public func createdAtString() -> String? {
         
-        let calendar = Calendar.current
-        let dayToday = calendar.component(.day, from: Date())
-        let monthToday = calendar.component(.month, from: Date())
-        let yearToday = calendar.component(.year, from: Date())
-        let dayCreatedAt = calendar.component(.day, from: createdAt)
-        let monthCreatedAt = calendar.component(.month, from: createdAt)
-        let yearCreatedAt = calendar.component(.year, from: createdAt)
-        
-        let isSameDay = (dayToday == dayCreatedAt) && (monthToday == monthCreatedAt) && (yearToday == yearCreatedAt)
-        
-        if isSameDay {
+        let datesAreSameDay = Date.datesAreSameDay(date1: Date(), date2: createdAt)
+        if datesAreSameDay {
+            let seconds = Int(Date().timeIntervalSince(createdAt))
             
-            let dayHour = calendar.component(.hour, from: Date())
-            let dayMinute = calendar.component(.minute, from: Date())
-            let daySecond = calendar.component(.second, from: Date())
-            let createdAtHour = calendar.component(.hour, from: createdAt)
-            let createdAtMinute = calendar.component(.minute, from: createdAt)
-            let createdAtSecond = calendar.component(.second, from: createdAt)
-            
-            let secondsDifference = ((dayHour - createdAtHour) * 3600) + ((dayMinute - createdAtMinute) * 60) + (daySecond - createdAtSecond)
-            
-            if secondsDifference < 60 {
-                return String(secondsDifference) + "s"
-            } else if secondsDifference < 3600 {
-                let minutes = secondsDifference / 60
-                return String(minutes) + "m"
+            if seconds < 60 {
+                return String(seconds) + "s"
+            } else if seconds < 3600 {
+                return String(seconds/60) + "m"
             } else {
                 return createdAt.string(withFormat: "h:mm a")
             }
@@ -70,4 +52,5 @@ class Message: NSObject {
             return createdAt.string(withFormat: "M/d/yyyy, h:mm a")
         }
     }
+    
 }
