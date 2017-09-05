@@ -11,6 +11,7 @@ import UIKit
 class IndividualStockVC: UIViewController {
     
     @IBOutlet weak var mainTableView: UITableView!
+    let noConnectionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoConnectionVC") as! NoConnectionVC
     
     var stock : Stock?
     var chosenUser : User?
@@ -18,22 +19,35 @@ class IndividualStockVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = stock?.symbol
         formatTableView()
-        if let stock = stock {
-            title = stock.symbol
-            StockTwitsAPIClient.pullMessagesForSymbol(stock.symbol, completionHandler: { (success) in
-                if success {
-                    self.mainTableView.reloadData()
-                } else {
-                    //pop up to retry
-                }
-            })
-        }
+        formatNoConnectView()
+        self.mainTableView.isHidden = true
+        self.pullIndividualStockMessages()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! UserVC
         destinationVC.user = chosenUser
+    }
+    
+    func pullIndividualStockMessages() {
+        if let stock = stock {
+            StockTwitsAPIClient.pullMessagesForSymbol(stock.symbol, completionHandler: { (success) in
+                if success {
+                    self.mainTableView.isHidden = false
+                    self.mainTableView.reloadData()
+                } else {
+                    self.noConnectionVC.view.isHidden = false
+                }
+            })
+        }
+    }
+    
+    func formatNoConnectView() {
+        noConnectionVC.delegate = self
+        constrainSubViewFullScreen(noConnectionVC.view, isActive: true)
+        noConnectionVC.view.isHidden = true
     }
 }
 
@@ -97,6 +111,14 @@ extension IndividualStockVC : UITableViewDelegate, UITableViewDataSource {
     }
     
 
+}
+
+extension IndividualStockVC: NoConnectionVCDelegate {
+    
+    func tryAgainButtonTapped() {
+        noConnectionVC.view.isHidden = true
+        pullIndividualStockMessages()
+    }
 }
 
 extension IndividualStockVC: MessageCellDelegate {

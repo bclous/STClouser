@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,10 +29,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="HN1-m0-Xjd" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="18w-wO-QNL"/>
+                            <constraint firstItem="HN1-m0-Xjd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="16C-5l-na7"/>
                             <constraint firstItem="HN1-m0-Xjd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="27P-Sc-mCb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HN1-m0-Xjd" secondAttribute="bottom" id="HsU-tH-yYb"/>
                             <constraint firstItem="HN1-m0-Xjd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RLj-k0-3tw"/>
-                            <constraint firstItem="HN1-m0-Xjd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hmY-SL-fSq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bqb-zb-uMy"/>
@@ -43,6 +44,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--No ConnectionVC-->
+        <scene sceneID="RXu-KI-K2e">
+            <objects>
+                <viewController storyboardIdentifier="NoConnectionVC" id="wii-MP-sgl" customClass="NoConnectionVC" customModule="STClouser" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i8C-iA-cve"/>
+                        <viewControllerLayoutGuide type="bottom" id="YF6-4l-lJj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GX5-J3-wTJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unable To Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85e-dZ-vk2">
+                                <rect key="frame" x="122" y="325" width="131.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgi-bf-0wB">
+                                <rect key="frame" x="122" y="351" width="131.5" height="40"/>
+                                <color key="backgroundColor" red="0.24313725490196078" green="0.34509803921568627" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="UOF-5D-wok"/>
+                                </constraints>
+                                <state key="normal" title="TRY AGAIN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAgainTapped:" destination="wii-MP-sgl" eventType="touchUpInside" id="0TO-Il-jcY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mgi-bf-0wB" firstAttribute="top" secondItem="85e-dZ-vk2" secondAttribute="bottom" constant="8" id="I7o-9S-tG7"/>
+                            <constraint firstItem="Mgi-bf-0wB" firstAttribute="width" secondItem="85e-dZ-vk2" secondAttribute="width" id="bI6-NB-YPT"/>
+                            <constraint firstItem="85e-dZ-vk2" firstAttribute="centerX" secondItem="GX5-J3-wTJ" secondAttribute="centerX" id="czB-ob-yhd"/>
+                            <constraint firstItem="85e-dZ-vk2" firstAttribute="centerY" secondItem="GX5-J3-wTJ" secondAttribute="centerY" id="koE-t7-j9g"/>
+                            <constraint firstItem="Mgi-bf-0wB" firstAttribute="centerX" secondItem="85e-dZ-vk2" secondAttribute="centerX" id="nVV-Wb-PJe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tryAgainButton" destination="Mgi-bf-0wB" id="ed7-Mq-81X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSa-es-IH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="310" y="821"/>
         </scene>
         <!--Individual StockVC-->
         <scene sceneID="TXc-QO-9Wp">
@@ -116,7 +166,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BgT-RX-CEl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aJo-8P-zse">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aJo-8P-zse">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

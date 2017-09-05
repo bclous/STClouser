@@ -14,14 +14,15 @@ class TrendingStocksVC: UIViewController {
     var chosenStock : Stock?
     let refreshControl = UIRefreshControl()
     let splashScreen = SplashScreenView()
-    
+    let noConnectionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoConnectionVC") as! NoConnectionVC
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Trending"
-        formatSplashScreen()
+        formatSupplementalViews()
         self.formatTableView()
         pullTrendingStocks()
+        mainTableView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -29,31 +30,28 @@ class TrendingStocksVC: UIViewController {
         mainTableView.reloadData()
     }
     
-
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! IndividualStockVC
         destinationVC.stock = chosenStock
      }
     
-    func formatSplashScreen() {
-        view.addSubview(splashScreen)
-        splashScreen.translatesAutoresizingMaskIntoConstraints = false
-        splashScreen.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        splashScreen.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        splashScreen.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        splashScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        navigationController?.navigationBar.isHidden = true
-        
+    func formatSupplementalViews() {
+        constrainSubViewFullScreen(splashScreen, isActive: true)
+        splashScreen.isHidden = false
+        constrainSubViewFullScreen(noConnectionVC.view, isActive: true)
+        noConnectionVC.delegate = self
+        noConnectionVC.view.isHidden = true
     }
     
     func pullTrendingStocks() {
         StockTwitsAPIClient.pullTrendingSymbols { (success) in
+            self.splashScreen.isHidden = true
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
             if success {
-                self.splashScreen.isHidden = true
-                self.navigationController?.navigationBar.isHidden = false
                 self.mainTableView.reloadData()
+                self.mainTableView.isHidden = false
             } else {
-                self.presentAlertToUser(title: "Unable to Connect", message: "Please try again", handler: self.alertHandler(_:))
+                self.noConnectionVC.view.isHidden = false
             }
         }
     }
@@ -98,7 +96,6 @@ extension TrendingStocksVC:  UITableViewDelegate, UITableViewDataSource {
             self.refreshControl.endRefreshing()
             self.mainTableView.reloadData()
         }
-
     }
     
     func formatRefreshControl() {
@@ -113,11 +110,27 @@ extension TrendingStocksVC:  UITableViewDelegate, UITableViewDataSource {
     
 }
 
+extension TrendingStocksVC: NoConnectionVCDelegate {
+    func tryAgainButtonTapped() {
+        noConnectionVC.view.isHidden = true
+        self.pullTrendingStocks()
+    }
+}
+
 extension UIViewController {
     func presentAlertToUser(title: String, message:String, handler: @escaping (_ action: UIAlertAction) -> ()) {
         let importAlert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         importAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: handler))
         self.present(importAlert, animated: true, completion: nil)
+    }
+    
+    func constrainSubViewFullScreen(_ subView: UIView, isActive: Bool) {
+        view.addSubview(subView)
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        subView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = isActive
+        subView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = isActive
+        subView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = isActive
+        subView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = isActive
     }
     
 }

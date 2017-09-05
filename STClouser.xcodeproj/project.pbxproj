@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F5BECA31F5E398900DF7F50 /* NoConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5BECA21F5E398900DF7F50 /* NoConnectionVC.swift */; };
 		0FAE554D1F56F8760037B18F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE554C1F56F8760037B18F /* AppDelegate.swift */; };
 		0FAE554F1F56F8760037B18F /* TrendingStocksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE554E1F56F8760037B18F /* TrendingStocksVC.swift */; };
 		0FAE55521F56F8760037B18F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FAE55501F56F8760037B18F /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F5BECA21F5E398900DF7F50 /* NoConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoConnectionVC.swift; sourceTree = "<group>"; };
 		0FAE55491F56F8760037B18F /* STClouser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STClouser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FAE554C1F56F8760037B18F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FAE554E1F56F8760037B18F /* TrendingStocksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingStocksVC.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				0FAE554C1F56F8760037B18F /* AppDelegate.swift */,
 				0FAE557A1F56FEC10037B18F /* StockTwitsAPIClient.swift */,
 				0FAE55821F57051D0037B18F /* DataStore.swift */,
+				0F5BECA21F5E398900DF7F50 /* NoConnectionVC.swift */,
 				0FAE55951F573D2A0037B18F /* Trending Stocks */,
 				0FAE55961F573D3E0037B18F /* Individual Stock */,
 				0FAE55971F573D680037B18F /* User */,
@@ -535,6 +538,7 @@
 				0FAE55921F572D200037B18F /* UserMainTableViewCell.swift in Sources */,
 				0FAE557D1F5700850037B18F /* Stock.swift in Sources */,
 				0FAE55891F571D0A0037B18F /* TrendingStockCell.swift in Sources */,
+				0F5BECA31F5E398900DF7F50 /* NoConnectionVC.swift in Sources */,
 				0FAE55811F5702580037B18F /* Message.swift in Sources */,
 				0FAE557F1F5701B30037B18F /* User.swift in Sources */,
 				0FAE55871F571CC80037B18F /* UserVC.swift in Sources */,
