@@ -16,8 +16,25 @@ class UserVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatTableView()
-        title = "Profile"
+        formatNavBar()
     }
+    
+    private func formatNavBar() {
+        title = user?.username
+        
+        let backButton = UIButton(type: .system)
+        backButton.setImage(#imageLiteral(resourceName: "ic_keyboard_arrow_left_white").withRenderingMode(.alwaysOriginal), for: .normal)
+        backButton.frame = CGRect(x: -40, y: 0, width: 34, height: 34)
+        backButton.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -20;
+        navigationItem.leftBarButtonItems = [negativeSpacer, UIBarButtonItem(customView: backButton)]
+    }
+    
+    func handleBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+
 
 }
 

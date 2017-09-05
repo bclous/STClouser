@@ -18,11 +18,11 @@ class TrendingStocksVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Trending"
+        formatNavBar()
         formatSupplementalViews()
-        self.formatTableView()
+        formatTableView()
         pullTrendingStocks()
-        mainTableView.isHidden = true
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +46,7 @@ class TrendingStocksVC: UIViewController {
     func pullTrendingStocks() {
         StockTwitsAPIClient.pullTrendingSymbols { (success) in
             self.splashScreen.isHidden = true
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
             if success {
                 self.mainTableView.reloadData()
                 self.mainTableView.isHidden = false
@@ -56,15 +56,25 @@ class TrendingStocksVC: UIViewController {
         }
     }
     
-    func alertHandler(_ action: UIAlertAction) {
-        pullTrendingStocks()
+    private func formatNavBar() {
+        let titleImageView = UIImageView(image: #imageLiteral(resourceName: "stWatermark"))
+        titleImageView.frame = CGRect(x: 0, y: 0, width: 70, height: 25)
+        titleImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImageView
+        navigationController?.automaticallyAdjustsScrollViewInsets = false
+        //navigationController?.navigationBar.tintColor = UIColor.white
+        
+        //navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 62/255.0, green: 88/255.0, blue: 110/255.0, alpha: 1)
+        navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
-
 }
 
 extension TrendingStocksVC:  UITableViewDelegate, UITableViewDataSource {
     
     func formatTableView() {
+        mainTableView.isHidden = true
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.register(UINib(nibName: "TrendingStockCell", bundle: nil), forCellReuseIdentifier: "stockCell")
